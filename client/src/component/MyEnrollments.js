@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./MyEnrollments.css"; // استخدم نفس الـ CSS كما في الكورس
+import "./MyEnrollments.css";
 
 function MyEnrollments() {
   const [enrollments, setEnrollments] = useState([]);
@@ -22,11 +22,23 @@ function MyEnrollments() {
 
   const getStatus = (date) => {
     const today = new Date();
-    const enrollDate = new Date(date);
-    if (enrollDate < today) return "completed";
-    if (enrollDate.toDateString() === today.toDateString()) return "ongoing";
+    const workshopDate = new Date(date);
+
+
+    today.setHours(0, 0, 0, 0);
+    workshopDate.setHours(0, 0, 0, 0);
+
+    if (workshopDate.getTime() === today.getTime()) {
+      return "ongoing";
+    }
+
+    if (workshopDate < today) {
+      return "completed";
+    }
+
     return "upcoming";
   };
+
 
   return (
     <div className="course-container">
@@ -39,20 +51,18 @@ function MyEnrollments() {
         {enrollments.map((item) => (
           <div key={item._id} className="course-card">
             <div className="course-info">
-              
+
               <span>{item.title}</span>
             </div>
             <div className="course-buttons">
               <p>
-                
-                {new Date(item.date).toLocaleString("en-US", {
+                {new Date(item.date).toLocaleDateString("en-US", {
                   month: "long",
                   day: "numeric",
                   year: "numeric",
-                  hour: "2-digit",
-                  minute: "2-digit",
                 })}
               </p>
+
               <p className={`status ${getStatus(item.date)}`}>
                 {getStatus(item.date).charAt(0).toUpperCase() +
                   getStatus(item.date).slice(1)}
