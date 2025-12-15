@@ -24,11 +24,7 @@ export default function CourseList() {
               <span>{course.courseName}</span>
             </div>
             <div className="course-buttons">
-              <button
-                onClick={() => navigate(`/view-participants/${course._id}`)}
-              >
-                View
-              </button>
+              
               <button
                 onClick={() =>
                   navigate(`/update-course/${course._id}`, { state: { course } })
