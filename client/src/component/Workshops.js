@@ -48,7 +48,7 @@ function WorkshopsPage() {
               <Link to="/my-enrollments">MyEnrollments</Link>
             </li>
             <li>
-              <Link to="/profile">Profile</Link>
+              <Link to="/AboutUs">AboutUs</Link>
             </li>
           </ul>
         </nav>
