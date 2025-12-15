@@ -2,8 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AdminDashboard from "./component/AdminDashboardPage";
 import CourseList from "./component/CourseList";
-import ViewParticipants from "./component/ViewParticipants";
-import Profile from "./component/Profile";
+import AboutUs from "./component/AboutUs";
 import AddCourse from "./component/AddCourse";
 import UpdateCourse from "./component/UpdateCourse";
 import Login from "./component/Login";
@@ -23,8 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} /> 
         <Route path="/courses-list" element={<CourseList />} />
-        <Route path="/view-participants/:courseId" element={<ViewParticipants />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/add-course" element={<AddCourse />} />
         <Route path="/admin/*" element={<AdminDashboard />} />
         <Route path="/update-course/:id" element={<UpdateCourse />} />
