@@ -31,8 +31,6 @@ function App() {
         <Route path="/workshops" element={<WorkshopsPage />} />
         <Route path="/workshops/:id" element={<WorkshopDetails />} />
         <Route path="/my-enrollments" element={<MyEnrollments />} />
-        
-
       </Routes>
     </Router>
   );
