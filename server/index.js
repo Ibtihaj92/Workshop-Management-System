@@ -8,7 +8,7 @@ import { fileURLToPath } from "url";
 import bcrypt from "bcrypt";
 import userModel from "./models/userModel.js";
 import workshopModel from "./models/workshopModel.js";
-import { Enrollment } from "./models/enrollmentModel.js";
+import { Enrollment } from "./models/EnrollmentModel.js";
 
 
 dotenv.config();
@@ -249,3 +249,4 @@ app.get("/api/enrollments/course/:courseId", async (req, res) => {
     START SERVER
 ============================================================ */
 app.listen(5000, () => console.log(" Server running on port 5000"));
+
