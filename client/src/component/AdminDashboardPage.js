@@ -40,17 +40,14 @@ function Sidebar({ active, setActive }) {
   const menuItems = [
     { name: "Add New Course", icon: "fa-solid fa-plus", path: "/add-course" },
     { name: "Courses List", icon: "fa-solid fa-list", path: "/courses-list" },
-    { name: "Profile", icon: "fa-solid fa-user", path: "/profile" }, 
+    { name: "Log Out", icon: "fa-solid fa-right-from-bracket", path: "/logout" },
   ];
 
   return (
     <div className="sidebar">
+      {/* Keep profile-icon */}
       <div
         className="profile-icon"
-        onClick={() => {
-          setActive("Profile");
-          navigate("/profile");
-        }}
         style={{ cursor: "pointer" }}
       >
         <i className="fa-solid fa-user fa-2x"></i>
@@ -63,7 +60,15 @@ function Sidebar({ active, setActive }) {
             className={active === item.name ? "active" : ""}
             onClick={() => {
               setActive(item.name);
-              navigate(item.path);
+
+              if (item.name === "Log Out") {
+                localStorage.removeItem("user");
+                localStorage.removeItem("userId");
+                localStorage.removeItem("role");
+                navigate("/"); // or navigate("/login")
+              } else {
+                navigate(item.path);
+              }
             }}
           >
             <i className={item.icon} style={{ marginRight: "10px" }}></i>
@@ -74,6 +79,7 @@ function Sidebar({ active, setActive }) {
     </div>
   );
 }
+
 
 // Main Dashboard component
 function AdminDashboard() {
